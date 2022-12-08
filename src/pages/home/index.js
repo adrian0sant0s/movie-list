@@ -1,26 +1,21 @@
+import { useState, useEffect } from "react";
+
 import { Container, MovieList, Movie } from "./styles";
+import { ApiKey } from "../../config/key";
 
 const Home = () => {
-  const movies = [
-    {
-      id: 1,
-      tittle: "A procura da felicidade",
-      image_url:
-        "https://br.web.img2.acsta.net/medias/nmedia/18/86/96/34/20028591.jpg",
-    },
-    {
-      id: 2,
-      tittle: "Lobo de wall Street",
-      image_url:
-        "https://br.web.img2.acsta.net/medias/nmedia/18/86/96/34/20028591.jpg",
-    },
-    {
-      id: 3,
-      tittle: "Thor",
-      image_url:
-        "https://br.web.img2.acsta.net/medias/nmedia/18/86/96/34/20028591.jpg",
-    },
-  ];
+  const [movies, setMovies] = useState([]);
+  const imageMovie = "https://image.tmdb.org/t/p/w500/";
+
+  console.log(movies);
+
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${ApiKey}&language=pt-BR`
+    )
+      .then((response) => response.json())
+      .then((data) => setMovies(data.results));
+  }, []);
 
   return (
     <Container>
@@ -30,9 +25,12 @@ const Home = () => {
           return (
             <Movie key={movie.id}>
               <a href="https: //google.com.br">
-                <img src={movie.image_url} alt={movie.tittle} />
+                <img
+                  src={`${imageMovie}${movie.poster_path}`}
+                  alt={movie.tittle}
+                />
               </a>
-              <span>{movie.tittle}</span>
+              <span>{movie.title}</span>
             </Movie>
           );
         })}
