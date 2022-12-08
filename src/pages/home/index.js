@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { Container, MovieList, Movie } from "./styles";
 import { ApiKey } from "../../config/key";
@@ -24,12 +25,12 @@ const Home = () => {
         {movies.map((movie) => {
           return (
             <Movie key={movie.id}>
-              <a href="https: //google.com.br">
+              <Link to={`/details/${movie.id}`}>
                 <img
                   src={`${imageMovie}${movie.poster_path}`}
                   alt={movie.tittle}
                 />
-              </a>
+              </Link>
               <span>{movie.title}</span>
             </Movie>
           );
