@@ -36,8 +36,9 @@ export const Container = styled.div`
   }
 
   button {
-    background-image: linear-gradient(to bottom, #008080, #000);
-    color: #eee;
+    background-image: linear-gradient(to left, #4b0082, #4b0099);
+    opacity: 0.8;
+    color: #fff;
     border-radius: 15px;
     font-size: 1rem;
     padding: 0.6rem 1.2rem;
@@ -47,7 +48,7 @@ export const Container = styled.div`
   }
 
   button:hover {
-    opacity: 0.8;
+    opacity: 0.9;
   }
 
   button:active {

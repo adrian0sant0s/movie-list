@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ApiKey } from "../../config/key";
 import { Container } from "./styles";
+import { Link } from "react-router-dom";
 
 const Details = () => {
   const { id } = useParams();
@@ -37,7 +38,9 @@ const Details = () => {
           <span className="realeaseDate">
             Data de lançamento: {movie.realeseDate}
           </span>
-          <button>Voltar</button>
+          <Link to={"/"}>
+            <button>Voltar</button>
+          </Link>
         </div>
       </div>
     </Container>
